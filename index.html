@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandra Schaftner | TU Chemnitz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Sandra Schaftner",
+      "url": "https://sandraschaftner.github.io/",
+      "image": "https://sandraschaftner.github.io/portrait.png",
+      "email": "mailto:sandra.schaftner@informatik.tu-chemnitz.de",
+      "jobTitle": "Scientific Researcher and PhD Candidate",
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": "Chemnitz University of Technology",
+        "alternateName": "TU Chemnitz",
+        "url": "https://www.tu-chemnitz.de/"
+      },
+      "sameAs": [
+        "https://orcid.org/0009-0008-3235-3042",
+        "https://www.linkedin.com/in/sandra-schaftner",
+        "https://github.com/sandraschaftner"
+      ],
+      "knowsAbout": [
+        "Scientific Knowledge Graphs",
+        "Semantic Web",
+        "LLM Agents"
+      ]
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary-color: #005A9B; /* TU Chemnitz Blue */
+            --secondary-color: #f4f7f6;
+            --text-color: #333;
+            --text-light: #666;
+            --accent-color: #f57921; /* Orange Accent */
+            --vsr-gray: #4a4a4a; /* Dark gray for VSR text */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #fafafa;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- ACCESSIBILITY FOCUS --- */
+        a:focus-visible, button:focus-visible {
+            outline: 3px solid var(--accent-color);
+            outline-offset: 3px;
+            border-radius: 4px;
+        }
+
+        /* --- HEADER / LOGOS --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logos {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .logo-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-item img {
+            max-height: 50px;
+            width: auto;
+        }
+
+        .vsr-text {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--vsr-gray);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: flex;
+            align-items: flex-end; 
+            justify-content: space-between;
+            padding: 60px 0;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .hero-text h2 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        /* Research Interests Tags */
+        .research-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 25px;
+        }
+
+        .tag {
+            background: transparent;
+            color: var(--text-color);
+            border: 1px solid rgba(245, 121, 33, 0.4); 
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .hero-text p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+        
+        .hero-text p a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px dashed var(--primary-color);
+        }
+        
+        .hero-text p a:hover {
+            color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
+        }
+
+        /* ORCID Info */
+        .orcid-wrapper {
+            margin-bottom: 15px;
+        }
+
+        .orcid-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+
+        .orcid-link i {
+            color: #a6ce39;
+            font-size: 1.2rem;
+        }
+
+        .orcid-link:hover {
+            color: var(--accent-color);
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 1px solid #eaeaea;
+        }
+
+        .contact-links a:focus-visible {
+            border-radius: 50px; /* Keep pill shape on focus */
+        }
+
+        .contact-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            color: var(--accent-color);
+            border-color: transparent;
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            max-height: 380px; 
+            object-fit: contain;
+            display: block;
+        }
+
+        /* --- SECTION TITLES --- */
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* --- PUBLICATIONS --- */
+        .publications {
+            padding: 60px 0;
+        }
+
+        .pub-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pub-card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid #eaeaea; /* Moderner, subtiler Rand statt dickem Balken */
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .pub-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+        }
+
+        .pub-card-content {
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+
+        .pub-card h3 {
+            font-size: 1.05rem; 
+            line-height: 1.4;
+            color: #222;
+        }
+
+        .pub-card-footer {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .pub-card p.venue {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .pub-card p.status {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            font-style: italic;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .pub-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            min-height: 76px; 
+            align-content: flex-start;
+        }
+
+        .pub-links a {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 5px 12px;
+            background: var(--secondary-color);
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .pub-links a:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* --- TIMELINE / CONFERENCES --- */
+        .conferences {
+            padding: 60px 0 100px 0;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: #cbd5e1;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item.left { left: 0; }
+        .timeline-item.right { left: 50%; }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            border: 4px solid var(--accent-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+            transition: transform 0.3s ease;
+        }
+        
+        .timeline-item:hover::after {
+            transform: scale(1.2);
+        }
+
+        .timeline-item.right::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid #eaeaea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .timeline-item:hover .timeline-content {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        .timeline-date {
+            color: var(--accent-color);
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                align-items: center; 
+            }
+            .contact-links {
+                justify-content: center;
+            }
+            .timeline::after {
+                left: 31px;
+            }
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            .timeline-item.right { left: 0%; }
+            .timeline-item.left::after, .timeline-item.right::after {
+                left: 21px;
+            }
+            .logos {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logos">
+                <div class="logo-item">
+                    <img src="vsr.png" alt="VSR Logo">
+                    <span class="vsr-text">VSR</span>
+                </div>
+                <div class="logo-item">
+                    <img src="across.png" alt="Across Alliance Logo">
+                </div>
+                <div class="logo-item">
+                    <img src="eu-funded.png" alt="Co-funded by the European Union">
+                </div>
+            </div>
+        </header>
+
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Sandra Schaftner</h1>
+                <h2>Scientific Researcher & PhD Candidate</h2>
+                
+                <div class="research-tags">
+                    <span class="tag">Scientific Knowledge Graphs</span>
+                    <span class="tag">Semantic Web</span>
+                    <span class="tag">LLM Agents</span>
+                </div>
+
+                <p>
+                    Since August 2025, I am a PhD candidate at the Department of Computer Science at <strong>TU Chemnitz</strong> within the <a href="https://www.across-alliance.eu/" target="_blank" rel="noopener noreferrer">Across Alliance</a> project.
+                </p>
+                
+                <div class="orcid-wrapper">
+                    <a href="https://orcid.org/0009-0008-3235-3042" target="_blank" rel="noopener noreferrer" class="orcid-link">
+                        <i class="fab fa-orcid"></i> ORCID ID: 0009-0008-3235-3042
+                    </a>
+                </div>
+
+                <div class="contact-links">
+                    <a href="mailto:sandra.schaftner@informatik.tu-chemnitz.de"><i class="fas fa-envelope"></i> Email</a>
+                    <a href="https://github.com/sandraschaftner" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="https://www.linkedin.com/in/sandra-schaftner" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="portrait.png" alt="Portrait Sandra Schaftner">
+            </div>
+        </section>
+
+        <section class="publications" id="publications">
+            <h2 class="section-title">Publications</h2>
+            <div class="pub-grid">
+                
+                <div class="pub-card">
+                    <div class="pub-card-content">
+                        <h3>ORKG Properties Ontology Consolidated: LLM-Driven Refinement of Crowdsourced Knowledge for Machine-Actionability</h3>
+                    </div>
+                    <div class="pub-card-footer">
+                        <p class="venue">Accepted at: The WebConf Semtech 2026 Workshop</p>
+                        <p class="status">To be published</p>
+                        <div class="pub-links">
+                            <a href="Schaftner-OPO-Consolidated.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> Draft PDF</a>
+                            <a href="https://w3id.org/allmac/opo-consolidation" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="https://w3id.org/orkg-properties-ontology-consolidated" target="_blank" rel="noopener noreferrer"><i class="fas fa-project-diagram"></i> Ontology</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pub-card">
+                    <div class="pub-card-content">
+                        <h3>The LOPE Method: Improving Consistent Property Extraction for Scientific Knowledge Graphs Using LLMs</h3>
+                    </div>
+                    <div class="pub-card-footer">
+                        <p class="venue">Accepted at: The WebConf Semtech 2026 Workshop</p>
+                        <p class="status">To be published</p>
+                        <div class="pub-links">
+                            <a href="Schaftner-LOPE-Method.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> Draft PDF</a>
+                            <a href="https://w3id.org/allmac/lope" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pub-card">
+                    <div class="pub-card-content">
+                        <h3>Deep Semantic Linking of Scientific Knowledge: An Agentic AI Framework for Knowledge Graph Construction</h3>
+                    </div>
+                    <div class="pub-card-footer">
+                        <p class="venue">Accepted at: ICWE (PhD Symposium)</p>
+                        <p class="status">To be published</p>
+                        <div class="pub-links">
+                            <a href="Schaftner-PhD-Symposium.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> Draft PDF</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="conferences" id="conferences">
+            <h2 class="section-title">Conferences Summer 2026</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">June 3, 2026</div>
+                        <h3>Leipzig Semantic Web Day (LSWT)</h3>
+                        <p>Leipzig, Germany</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">June 8 – 12, 2026</div>
+                        <h3>ICWE</h3>
+                        <p>Lyon, France</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">June 29 – July 3, 2026</div>
+                        <h3>The WebConf</h3>
+                        <p>Remote</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
