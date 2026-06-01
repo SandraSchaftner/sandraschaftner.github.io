@@ -215,7 +215,7 @@
         }
 
         .contact-links a:focus-visible {
-            border-radius: 50px; /* Keep pill shape on focus */
+            border-radius: 50px; 
         }
 
         .contact-links a:hover {
@@ -254,7 +254,7 @@
 
         .pub-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Angepasst für sauberes Nebeneinander */
             gap: 30px;
         }
 
@@ -263,7 +263,7 @@
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border: 1px solid #eaeaea; /* Moderner, subtiler Rand statt dickem Balken */
+            border: 1px solid #eaeaea; 
             display: flex;
             flex-direction: column;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -488,7 +488,12 @@
             </div>
         </section>
 
-        <div class="pub-card">
+        <!-- WIEDERHERGESTELLTE SECTION UND GRID -->
+        <section class="publications" id="publications">
+            <h2 class="section-title">Publications</h2>
+            <div class="pub-grid">
+                
+                <div class="pub-card">
                     <div class="pub-card-content">
                         <h3>ORKG Properties Ontology Consolidated: LLM-Driven Refinement of Crowdsourced Knowledge for Machine-Actionability</h3>
                     </div>
@@ -496,7 +501,7 @@
                         <p class="venue">Published at: The WebConf Semtech 2026 Workshop</p>
                         <p class="status">Published</p>
                         <div class="pub-links">
-                            <a href="https://dl.acm.org/doi/pdf/10.1145/3774905.3795080" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> Official PDF</a>
+                            <a href="https://dl.acm.org/doi/pdf/10.1145/3774905.3795080" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> PDF</a>
                             <a href="https://w3id.org/allmac/opo-consolidation" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
                             <a href="https://w3id.org/orkg-properties-ontology-consolidated" target="_blank" rel="noopener noreferrer"><i class="fas fa-project-diagram"></i> Ontology</a>
                         </div>
@@ -511,7 +516,7 @@
                         <p class="venue">Published at: The WebConf Semtech 2026 Workshop</p>
                         <p class="status">Published</p>
                         <div class="pub-links">
-                            <a href="https://dl.acm.org/doi/pdf/10.1145/3774905.3795079" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> Official PDF</a>
+                            <a href="https://dl.acm.org/doi/pdf/10.1145/3774905.3795079" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> PDF</a>
                             <a href="https://w3id.org/allmac/lope" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
                         </div>
                     </div>
