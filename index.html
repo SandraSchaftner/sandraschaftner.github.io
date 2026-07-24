@@ -254,7 +254,7 @@
 
         .pub-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Angepasst für sauberes Nebeneinander */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
             gap: 30px;
         }
 
@@ -275,7 +275,8 @@
         }
 
         .pub-card-content {
-            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
             margin-bottom: 20px;
         }
 
@@ -283,18 +284,31 @@
             font-size: 1.05rem; 
             line-height: 1.4;
             color: #222;
+            margin-bottom: 0;
         }
 
-        .pub-card-footer {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
+        .award-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #fffdf5; 
+            color: #b07d00; 
+            border: 1px solid #ffe082;
+            padding: 4px 8px; 
+            border-radius: 6px;
+            font-size: 0.75rem; 
+            font-weight: 700;
+            margin-top: 10px;
+            align-self: flex-start; /* Verhindert, dass das Badge über die ganze Breite gestreckt wird */
+            box-shadow: 0 2px 4px rgba(255, 193, 7, 0.1);
+            white-space: nowrap; 
+            overflow: hidden; 
+            text-overflow: ellipsis;
         }
 
-        .pub-card p.venue {
+        .award-badge i {
+            color: #f5b041;
             font-size: 0.9rem;
-            color: var(--text-light);
-            font-weight: 600;
         }
 
         .pub-card p.status {
@@ -302,25 +316,61 @@
             color: var(--accent-color);
             font-style: italic;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-top: auto; /* Drückt den Status immer an den exakt selben unteren Rand des Top-Blocks */
+            padding-top: 12px;
+        }
+        
+        .pub-card-footer {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1; /* Füllt den verbleibenden Platz in der Karte */
+        }
+
+        .pub-meta-group {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #eaeaea;
+        }
+
+        .pub-meta-group:first-of-type {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+
+        .pub-meta-group strong {
+            color: var(--primary-color);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .pub-card p.venue {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 8px;
         }
 
         .pub-links {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
-            min-height: 76px; 
-            align-content: flex-start;
         }
 
         .pub-links a {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-color);
             text-decoration: none;
-            padding: 5px 12px;
+            padding: 5px 10px;
             background: var(--secondary-color);
             border-radius: 4px;
             transition: background 0.2s, color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .pub-links a:hover {
@@ -328,87 +378,22 @@
             color: white;
         }
 
-        /* --- TIMELINE / CONFERENCES --- */
-        .conferences {
-            padding: 60px 0 100px 0;
-        }
-
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: #cbd5e1;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
-            border-radius: 2px;
-        }
-
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            background-color: inherit;
-            width: 50%;
-        }
-
-        .timeline-item.left { left: 0; }
-        .timeline-item.right { left: 50%; }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            right: -10px;
-            background-color: white;
-            border: 4px solid var(--accent-color);
-            top: 15px;
-            border-radius: 50%;
-            z-index: 1;
-            transition: transform 0.3s ease;
+       /* PERFEKTES ALIGNMENT FÜR LAPTOPS/DESKTOPS */
+        @media screen and (min-width: 1024px) {
+            .pub-card-content { 
+                min-height: 200px; /* Großzügig Platz für langen Titel + Award Badge */
+            } 
+            .pub-meta-group.published-in { 
+                min-height: 180px; /* Gleicht den langen Springer-Text mit den kurzen ACM-Texten an */
+            } 
+            .pub-meta-group.presented-at { 
+                min-height: 120px; /* Hält die Recording/Poster-Buttons auf exakt einer Linie */
+            } 
         }
         
-        .timeline-item:hover::after {
-            transform: scale(1.2);
-        }
 
-        .timeline-item.right::after {
-            left: -10px;
-        }
-
-        .timeline-content {
-            padding: 20px;
-            background-color: white;
-            position: relative;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border: 1px solid #eaeaea;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .timeline-item:hover .timeline-content {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-        }
-
-        .timeline-date {
-            color: var(--accent-color);
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-        }
-
-        .timeline-content h3 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
+       
+         
 
         /* Responsive Design */
         @media screen and (max-width: 768px) {
@@ -436,6 +421,7 @@
                 justify-content: center;
             }
         }
+        
     </style>
 </head>
 <body>
@@ -488,87 +474,114 @@
             </div>
         </section>
 
-        <!-- WIEDERHERGESTELLTE SECTION UND GRID -->
-        <section class="publications" id="publications">
-            <h2 class="section-title">Publications</h2>
+       <section class="publications" id="publications">
+            <h2 class="section-title">Publications & Presentations</h2>
             <div class="pub-grid">
                 
-                <div class="pub-card">
-                    <div class="pub-card-content">
-                        <h3>ORKG Properties Ontology Consolidated: LLM-Driven Refinement of Crowdsourced Knowledge for Machine-Actionability</h3>
-                    </div>
-                    <div class="pub-card-footer">
-                        <p class="venue">Published at: The WebConf Semtech 2026 Workshop</p>
-                        <p class="status">Published</p>
-                        <div class="pub-links">
-                            <a href="https://dl.acm.org/doi/pdf/10.1145/3774905.3795080" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> PDF</a>
-                            <a href="https://w3id.org/allmac/opo-consolidation" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
-                            <a href="https://w3id.org/orkg-properties-ontology-consolidated" target="_blank" rel="noopener noreferrer"><i class="fas fa-project-diagram"></i> Ontology</a>
-                        </div>
-                    </div>
-                </div>
+                
 
+                <!-- Paper 1: LOPE Method -->
                 <div class="pub-card">
                     <div class="pub-card-content">
                         <h3>The LOPE Method: Improving Consistent Property Extraction for Scientific Knowledge Graphs Using LLMs</h3>
+                        <p class="status">Published</p>
                     </div>
                     <div class="pub-card-footer">
-                        <p class="venue">Published at: The WebConf Semtech 2026 Workshop</p>
-                        <p class="status">Published</p>
-                        <div class="pub-links">
-                            <a href="https://dl.acm.org/doi/pdf/10.1145/3774905.3795079" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> PDF</a>
-                            <a href="https://w3id.org/allmac/lope" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                        <div class="pub-meta-group published-in">
+                            <strong>Published in</strong>
+                            <p class="venue">Companion Proceedings of the WebConf 2026</p>
+                            <div class="pub-links">
+                                <a href="https://dl.acm.org/doi/pdf/10.1145/3774905.3795079" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> PDF</a>
+                                <a href="https://w3id.org/allmac/lope" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                            </div>
+                        </div>
+
+                        <div class="pub-meta-group presented-at">
+                            <strong>Presented at</strong>
+                            <p class="venue">SemTech 2026 Workshop (The WebConf)</p>
+                            <div class="pub-links">
+                                <a href="https://doi.org/10.5281/zenodo.21281247" target="_blank" rel="noopener noreferrer"><i class="fas fa-video"></i> Recording</a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Paper 2: OPO Consolidated -->
+                <div class="pub-card">
+                    <div class="pub-card-content">
+                        <h3>ORKG Properties Ontology Consolidated: LLM-Driven Refinement of Crowdsourced Knowledge for Machine-Actionability</h3>
+                        <p class="status">Published</p>
+                    </div>
+                    <div class="pub-card-footer">
+                        <div class="pub-meta-group published-in">
+                            <strong>Published in</strong>
+                            <p class="venue">Companion Proceedings of the WebConf 2026</p>
+                            <div class="pub-links">
+                                <a href="https://dl.acm.org/doi/pdf/10.1145/3774905.3795080" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> PDF</a>
+                                <a href="https://w3id.org/allmac/opo-consolidation" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="https://w3id.org/orkg-properties-ontology-consolidated" target="_blank" rel="noopener noreferrer"><i class="fas fa-project-diagram"></i> Ontology</a>
+                            </div>
+                        </div>
+
+                        <div class="pub-meta-group presented-at">
+                            <strong>Presented at</strong>
+                            <p class="venue">SemTech 2026 Workshop (The WebConf)</p>
+                            <div class="pub-links">
+                                <a href="https://doi.org/10.5281/zenodo.21281343" target="_blank" rel="noopener noreferrer"><i class="fas fa-video"></i> Recording</a>
+                            </div>
+                        </div>
+
+                        <div class="pub-meta-group presented-at">
+                            <strong>Presented at</strong>
+                            <p class="venue">Leipzig Semantic Web Day (LSWT) 2026</p>
+                            <div class="pub-links">
+                                <a href="https://doi.org/10.5281/zenodo.21531344" target="_blank" rel="noopener noreferrer"><i class="fas fa-video"></i> Recording</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Paper 3: Deep Semantic Linking -->
                 <div class="pub-card">
                     <div class="pub-card-content">
                         <h3>Deep Semantic Linking of Scientific Knowledge: An Agentic AI Framework for Knowledge Graph Construction</h3>
+                        <div class="award-badge"><i class="fas fa-trophy"></i> Best PhD Symposium Paper Award</div>
+                        <p class="status">Published</p>
                     </div>
                     <div class="pub-card-footer">
-                        <p class="venue">Accepted at: ICWE (PhD Symposium)</p>
-                        <p class="status">To be published</p>
-                        <div class="pub-links">
-                            <a href="Schaftner-PhD-Symposium.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> Author Copy</a>
+                        <div class="pub-meta-group published-in">
+                            <strong>Published in</strong>
+                            <p class="venue">ICWE 2026. Lecture Notes in Computer Science, vol 16625. Springer, Cham.</p>
+                            <div class="pub-links">
+                                <a href="Schaftner-PhD-Symposium.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-pdf"></i> Author Copy</a>
+                                <a href="https://doi.org/10.1007/978-3-032-29372-5_22" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Publisher Version</a>
+                            </div>
+                        </div>
+
+                        <div class="pub-meta-group presented-at">
+                            <strong>Presented at</strong>
+                            <p class="venue">ICWE 2026 PhD Symposium</p>
+                            <div class="pub-links">
+                                <a href="https://doi.org/10.5281/zenodo.21531609" target="_blank" rel="noopener noreferrer"><i class="fas fa-desktop"></i> Slides</a>
+                            </div>
+                        </div>
+
+                        <div class="pub-meta-group presented-at">
+                            <strong>Presented at</strong>
+                            <p class="venue">ICWE 2026 Poster Session</p>
+                            <div class="pub-links">
+                                <a href="https://doi.org/10.5281/zenodo.21531731" target="_blank" rel="noopener noreferrer"><i class="fas fa-image"></i> Poster</a>
+                            </div>
                         </div>
                     </div>
                 </div>
 
             </div>
         </section>
-
-        <section class="conferences" id="conferences">
-            <h2 class="section-title">Conferences Summer 2026</h2>
-            <div class="timeline">
-                
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <div class="timeline-date">June 3, 2026</div>
-                        <h3>Leipzig Semantic Web Day (LSWT)</h3>
-                        <p>Leipzig, Germany</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item right">
-                    <div class="timeline-content">
-                        <div class="timeline-date">June 8 – 12, 2026</div>
-                        <h3>ICWE</h3>
-                        <p>Lyon, France</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item left">
-                    <div class="timeline-content">
-                        <div class="timeline-date">June 29 – July 3, 2026</div>
-                        <h3>The WebConf</h3>
-                        <p>Remote</p>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
+<!-- Footer -->
+        <footer style="text-align: center; padding: 40px 0 20px 0; margin-top: 40px; border-top: 1px solid #eaeaea;">
+            <a href="impressum.html" style="color: var(--text-light); text-decoration: none; font-size: 0.9rem;">Impressum</a>
+        </footer>
     </div>
 </body>
 </html>
